@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeModule } from './+home/home.module';
 import { AboutModule } from './+about/about.module';
 import { TodoModule } from './+todo/todo.module';
+import { MaterialModule } from '@angular/material';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -18,7 +19,8 @@ import { AppComponent, XLargeDirective } from './app.component';
     HomeModule,
     AboutModule,
     TodoModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ]
 })
 export class AppModule {
