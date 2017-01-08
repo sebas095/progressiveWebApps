@@ -19,9 +19,6 @@ export class HomeComponent {
   }
 
   universalInit() {
-    this.model.get('/data.json').subscribe(data => {
-      this.data = data;
-    });
   }
 
 }

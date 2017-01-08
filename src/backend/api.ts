@@ -10,7 +10,7 @@ router
       .then((doc) => res.json(doc));
   })
   .put((req, res) => {
-    let logroData = {};
+    let logroData: any = {};
     if (req.body.title) logroData.title = req.body.title;
     if (req.body.description) logroData.description = req.body.description;
     if (req.body.author) logroData.author = req.body.author;
