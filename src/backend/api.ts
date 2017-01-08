@@ -4,6 +4,13 @@ import { Logro } from './models/logro';
 const router = express.Router();
 
 router
+  .route('/logros/:id')
+  .get((req, res) => {
+    Logro.findById(req.params.id)
+      .then((doc) => res.json(doc));
+  })
+
+router
   .route('/logros')
   .get((req, res) => {
     Logro.find().then((documents) => res.json(documents));
