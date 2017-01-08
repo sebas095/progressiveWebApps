@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
+import { ILogro } from '../home/home.component';
 
 @Injectable()
 export class LogrosService {
+  logros: ILogro[];
 
-  constructor() { }
-
-  all() : ILogro[] {
-    return [
+  constructor() {
+    this.logros = [
       {
         id: 1,
         title: 'Logré algo muy interesante',
@@ -22,13 +22,12 @@ export class LogrosService {
       }
     ];
   }
-}
 
+  find(id: number) : ILogro {
+    return this.logros.find((logro) => logro.id === id);
+  }
 
-// id, title, description
-
-interface ILogro {
-  id: number;
-  title: string;
-  description?: string;
+  all() : ILogro[] {
+    return this.logros;
+  }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LogrosService } from '../services/logros.service';
+import { ILogro } from '../home/home.component';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-logro',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logro.component.css']
 })
 export class LogroComponent implements OnInit {
+  logro: ILogro;
 
-  constructor() { }
+  constructor(private logrosService: LogrosService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.forEach((params: Params) => {
+      const {id} = params;
+      this.logro = this.logrosService.find(parseInt(id));
+    });
   }
 
 }

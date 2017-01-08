@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
 // id, title, description
 
-interface ILogro {
+export interface ILogro {
   id: number;
   title: string;
   description?: string;
