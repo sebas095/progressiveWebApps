@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { LogrosService } from './services/logros.service';
-import { LogroComponent } from './logros/logro.component';
+import { LogroComponent } from './logro/logro.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LogroComponent } from './logros/logro.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [LogrosService],
   bootstrap: [AppComponent]
