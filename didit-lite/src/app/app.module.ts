@@ -7,12 +7,15 @@ import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { LogrosService } from './services/logros.service';
+import { LogroComponent } from './logros/logro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TruncatePipe
+    TruncatePipe,
+    LogroComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     HttpModule,
     MaterialModule.forRoot()
   ],
-  providers: [],
+  providers: [LogrosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

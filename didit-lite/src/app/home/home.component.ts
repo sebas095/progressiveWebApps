@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LogrosService } from '../services/logros.service';
 
 @Component({
   selector: 'app-home',
@@ -9,29 +10,12 @@ export class HomeComponent implements OnInit {
   logros: ILogro[];
   title: string = 'Bienvenido';
 
-  constructor() { }
+  constructor(private logrosService : LogrosService) { }
 
   ngOnInit() {
-    this.logros = this.getLogros();
+    this.logros = this.logrosService.all();
   }
 
-  getLogros() : ILogro[] {
-    return [
-      {
-        id: 1,
-        title: 'Logré algo muy interesante',
-        description: 'Bacon ipsum'
-      },{
-        id: 2,
-        title: 'Logré otra cosa muy interesante',
-        description: 'Bacon ipsum dolor amet venison spare ribs strip steak bacon rump filet mignon pork chop kielbasa shankle tongue hamburger shank short loin chuck landjaeger. Flank kielbasa doner, pastrami biltong ribeye pancetta drumstick leberkas frankfurter pork belly rump. Tenderloin pork tail meatloaf frankfurter rump swine corned beef tri-tip. Pork loin shoulder alcatra spare ribs biltong shankle porchetta strip steak pork belly short loin swine capicola bacon'
-      },{
-        id: 3,
-        title: 'Logré algo aún más interesante',
-        description: 'Bacon ipsum dolor amet venison spare ribs strip steak bacon rump filet mignon pork chop kielbasa shankle tongue hamburger shank short loin chuck landjaeger. Flank kielbasa doner, pastrami biltong ribeye pancetta drumstick leberkas frankfurter pork belly rump. Tenderloin pork tail meatloaf frankfurter rump swine corned beef tri-tip. Pork loin shoulder alcatra spare ribs biltong shankle porchetta strip steak pork belly short loin swine capicola bacon'
-      }
-    ];
-  }
 }
 
 // id, title, description
