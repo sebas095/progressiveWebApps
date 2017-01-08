@@ -9,6 +9,15 @@ router
     Logro.findById(req.params.id)
       .then((doc) => res.json(doc));
   })
+  .put((req, res) => {
+    let logroData = {};
+    if (req.body.title) logroData.title = req.body.title;
+    if (req.body.description) logroData.description = req.body.description;
+    if (req.body.author) logroData.author = req.body.author;
+
+    Logro.findByIdAndUpdate(req.params.id, logroData, {new: true})
+      .then((doc) => res.json(doc));
+  })
 
 router
   .route('/logros')
