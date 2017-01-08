@@ -18,6 +18,10 @@ router
     Logro.findByIdAndUpdate(req.params.id, logroData, {new: true})
       .then((doc) => res.json(doc));
   })
+  .delete((req, res) => {
+    Logro.findByIdAndRemove(req.params.id)
+      .then(() => res.json({message: 'Se elimino el recurso'}));
+  });
 
 router
   .route('/logros')
