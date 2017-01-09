@@ -9,6 +9,9 @@ import { SharedModule } from './app/shared/shared.module';
 import { CacheService } from './app/shared/cache.service';
 import { MaterialModule } from '@angular/material';
 
+import { ShellNoRender, ShellRender } from '@angular/app-shell/app/shell';
+import { IS_PRERENDER } from '@angular/app-shell/app/prerender';
+
 // Will be merged into @angular/platform-browser in a later release
 // see https://github.com/angular/angular/pull/12322
 import { Meta } from './angular2-meta';
@@ -35,8 +38,13 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
 
 @NgModule({
   bootstrap: [ AppComponent ],
+  declarations: [
+    // AppComponent,
+    // ShellRender,
+    // ShellNoRender
+  ],
   imports: [
-    // MaterialModule.forRoot() should be included first
+    MaterialModule.forRoot(), // should be included first
     UniversalModule, // BrowserModule, HttpModule, and JsonpModule are included
 
     FormsModule,
@@ -44,22 +52,21 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
 
     IdlePreloadModule.forRoot(),
     SharedModule.forRoot(),
-    AppModule,
-    MaterialModule.forRoot()
+    AppModule
   ],
+  // exports: [
+  //   ShellNoRender,
+  //   ShellRender,
+  // ],
   providers: [
     { provide: 'isBrowser', useValue: isBrowser },
     { provide: 'isNode', useValue: isNode },
-
     { provide: 'req', useFactory: getRequest },
     { provide: 'res', useFactory: getResponse },
-
     { provide: 'LRU', useFactory: getLRU, deps: [] },
-
     CacheService,
-
     Meta,
-
+    { provide: IS_PRERENDER, useValue: isNode }
     // { provide: AUTO_PREBOOT, useValue: false } // turn off auto preboot complete
   ]
 })

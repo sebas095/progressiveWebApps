@@ -28,15 +28,14 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
 @NgModule({
   bootstrap: [ AppComponent ],
   imports: [
-    // MaterialModule.forRoot() should be included first
+    MaterialModule.forRoot(), // should be included first
     UniversalModule, // BrowserModule, HttpModule, and JsonpModule are included
 
     FormsModule,
     RouterModule.forRoot([], { useHash: false }),
 
     SharedModule.forRoot(),
-    AppModule,
-    MaterialModule.forRoot()
+    AppModule
   ],
   providers: [
     { provide: 'isBrowser', useValue: isBrowser },

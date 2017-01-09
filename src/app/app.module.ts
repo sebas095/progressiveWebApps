@@ -10,15 +10,14 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, XLargeDirective } from './app.component';
 
-
 @NgModule({
   declarations: [ AppComponent, XLargeDirective ],
   imports: [
+    MaterialModule.forRoot(),
     SharedModule,
     HomeModule,
     AboutModule,
-    AppRoutingModule,
-    MaterialModule
+    AppRoutingModule
   ]
 })
 export class AppModule {
