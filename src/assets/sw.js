@@ -44,7 +44,7 @@ self.addEventListener('fetch', (ev) => {
         if (res) {
           console.log('Estoy en el cache y te ahorré una petición');
           // Responde desde el cache
-          return res;
+          return returnFromCacheThenFetch(ev.request);
         } else {
           console.log('No estoy en el cache');
         }
@@ -57,3 +57,24 @@ self.addEventListener('fetch', (ev) => {
       })
   );
 });
+
+function returnFromCacheThenFetch(request) {
+  // Promesa de abrir el cache
+  const cachePromise = caches.open(CACHE_NAME);
+
+  // Promesa de buscar algo que responda  request
+  const matchPromise = cachePromise.then((cache) => {
+    return cache.match(request);
+  });
+
+  return Promise.all([cachePromise, matchPromise])
+                .then(([cache, cacheResponse]) => {
+                  // Aunque buscamos en el cache, vamos al servidor
+                  const fetchPromise = fetch(request).then((fetchResponse) => {
+                    // Actualizamos el cache con la nueva verión del servidor
+                    cache.put(request, fetchResponse.clone());
+                    return fetchResponse;
+                  })
+                  return cacheResponse || fetchPromise;
+                });
+}
