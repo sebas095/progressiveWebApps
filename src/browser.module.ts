@@ -40,8 +40,8 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
   bootstrap: [ AppComponent ],
   declarations: [
     // AppComponent,
-    // ShellRender,
-    // ShellNoRender
+    ShellRender,
+    ShellNoRender
   ],
   imports: [
     MaterialModule.forRoot(), // should be included first
@@ -54,10 +54,6 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
     SharedModule.forRoot(),
     AppModule
   ],
-  // exports: [
-  //   ShellNoRender,
-  //   ShellRender,
-  // ],
   providers: [
     { provide: 'isBrowser', useValue: isBrowser },
     { provide: 'isNode', useValue: isNode },

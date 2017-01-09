@@ -20,7 +20,13 @@
   <app>
     Loading Universal ...
   </app>
-
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw')
+        .then((reg) => console.log('Se registró la service worker'))
+        .catch((err) => console.log(err));
+    }
+  </script>
   <script async src="/main.bundle.js"></script>
 </body>
 </html>

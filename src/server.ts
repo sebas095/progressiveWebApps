@@ -92,6 +92,10 @@ routes.forEach(route => {
   app.get(`/${route}/*`, ngApp);
 });
 
+app.get('/sw', (req, res) => {
+  res.sendFile('assets/sw.js', {root: __dirname});
+});
+
 app.get('*', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
   var pojo = { status: 404, message: 'No Content' };
