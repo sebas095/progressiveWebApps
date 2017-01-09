@@ -14,6 +14,23 @@ self.addEventListener('install', (ev) => {
     });
 });
 
-self.addEventListener('activate', () => {});
+self.addEventListener('activate', (ev) => {});
 
-self.addEventListener('fetch', () => {});
+self.addEventListener('fetch', (ev) => {
+  ev.respondWith(
+    caches.match(ev.request)
+      .then((res) => {
+        // res es la respuesta de buscar en el cache
+        console.log(ev.request.url);
+        if (res) {
+          console.log('Estoy en el cache y te ahorré una petición');
+          // Responde desde el cache
+          return res;
+        } else {
+          console.log('No estoy en el cache');
+        }
+        // Ve al servidor
+        return fetch(ev.request);
+      })
+  );
+});
