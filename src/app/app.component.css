@@ -5,3 +5,25 @@ md-sidenav-layout {
 md-sidenav {
   width: 200px;
 }
+
+md-sidenav a {
+  display: block;
+  text-align: left;
+  padding: 0.5em 1em;
+  color: #222 !important;
+  font-weight: bold;
+  margin: 0.5em 0;
+  text-transform: uppercase;
+}
+
+md-sidenav a:nth-child(1) {
+  margin-top: 2em;
+}
+
+md-icon {
+  cursor: pointer;
+}
+
+.no-padding {
+  padding: 0;
+}

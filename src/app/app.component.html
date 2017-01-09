@@ -1,6 +1,6 @@
 <md-toolbar color="primary">
   <div class="row">
-    <div class="col-xs-1" (click)="sidenav.toggle()">
+    <div class="col-xs-1 no-padding" (click)="sidenav.toggle()">
       <md-icon>reorder</md-icon>
     </div>
     <div class="col-xs-11">
@@ -10,10 +10,13 @@
 </md-toolbar>
 <md-sidenav-layout>
   <md-sidenav #sidenav mode="push">
-    <a href="">Home</a>
-    <a href="">About</a>
+    <div (click)="sidenav.close()">
+      <a routerLink="/home">Home</a>
+      <a routerLink="/about">About</a>
+      <a>Cerrar menú</a>
+    </div>
   </md-sidenav>
-  <div>
+  <md-card> <!-- *shellNoRender  -->
     <router-outlet></router-outlet>
-  </div>
+  </md-card>
 </md-sidenav-layout>
